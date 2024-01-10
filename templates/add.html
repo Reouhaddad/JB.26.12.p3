@@ -1,0 +1,24 @@
+<!-- add.html -->
+{% extends "layout.html" %}
+{% block title %}Add animal{% endblock %}
+{% block content %}
+  <h1>Add animal</h1>
+  {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-success">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+  <form action="/add" method="post">
+    <label for="age">Age:</label>
+    <input type="text" id="age" name="age"><br><br>
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type"><br><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="picture">Picture:</label>
+    <input type="text" id="picture" name="picture"><br><br>
+    <input type="submit" value="Add animal">
+  </form>
+{% endblock %}

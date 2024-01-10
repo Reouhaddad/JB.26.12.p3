@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Animals{% endblock %}
+{% block content %}
+    <h1>Animals</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-success">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <table border="3">
+        <tr>
+            <th>Id</th>
+            <th>Age</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Picture</th>
+            <th>Delete</th>
+        </tr>
+        {% for animal in animals %}
+            <tr>
+                <td>{{ animal[0] }}</td>
+                <td>{{ animal[1] }}</td>
+                <td>{{ animal[2] }}</td>
+                <td>{{ animal[3] }}</td>
+                <td><img src="{{animal[4]}}"></td>
+                <td><form action="/delete_animal/{{ animal[0] }}" method="post">
+                    <input type="submit" value="Delete">
+                </form></td>
+                
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
